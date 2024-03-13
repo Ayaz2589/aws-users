@@ -1,0 +1,30 @@
+service: serverless-express
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  app:
+    handler: handler.handler
+    events:
+      - http:
+          path: /
+          method: any
+      - http:
+          path: /health
+          method: GET
+      - http:
+          path: /users
+          method: POST
+      - http:
+          path: /users/{id}
+          method: DELETE
+      - http:
+          path: /users/{id}
+          method: GET
+      - http:
+          path: /users/{id}
+          method: PUT
